@@ -12,32 +12,10 @@
     "https"
   ],
   "paths": {
-    "/": {
-      "get": {
-        "tags":[
-          "Hello World"
-        ],
-        "description": "",
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api-docs": {
-      "get": {
-        "description": "",
-        "responses": {
-          "default": {
-            "description": ""
-          }
-        }
-      }
-    },
     "/students/": {
       "get": {
-        "description": "",
+        "tags": ["Students"],
+        "description": "Get all students",
         "produces": [
           "application/json"
         ],
@@ -48,7 +26,8 @@
         }
       },
       "post": {
-        "description": "",
+        "tags": ["Students"],
+        "description": "Create a new student",
         "parameters": [
           {
             "name": "body",
@@ -57,28 +36,28 @@
               "type": "object",
               "properties": {
                 "name": {
-                  "example": "any"
+                  "example": "John Doe"
                 },
                 "email": {
-                  "example": "any"
+                  "example": "john.doe@example.com"
                 },
                 "age": {
-                  "example": "any"
+                  "example": 22
                 },
                 "major": {
-                  "example": "any"
+                  "example": "Computer Science"
                 },
                 "graduationYear": {
-                  "example": "any"
+                  "example": 2024
                 },
                 "GPA": {
-                  "example": "any"
+                  "example": 3.5
                 },
                 "attendanceMode": {
-                  "example": "any"
+                  "example": "in-person"
                 },
                 "courses": {
-                  "example": "any"
+                  "example": ["CS101", "CS102"]
                 }
               }
             }
@@ -99,10 +78,8 @@
     },
     "/students/{id}": {
       "get": {
-        "description": "",
-        "produces": [
-          "application/json"
-        ],
+        "tags": ["Students"],
+        "description": "Get a student by ID",
         "parameters": [
           {
             "name": "id",
@@ -118,7 +95,8 @@
         }
       },
       "put": {
-        "description": "",
+        "tags": ["Students"],
+        "description": "Update a student's information",
         "parameters": [
           {
             "name": "id",
@@ -133,28 +111,28 @@
               "type": "object",
               "properties": {
                 "name": {
-                  "example": "any"
+                  "example": "John Doe Updated"
                 },
                 "email": {
-                  "example": "any"
+                  "example": "john.doe.updated@example.com"
                 },
                 "age": {
-                  "example": "any"
+                  "example": 23
                 },
                 "major": {
-                  "example": "any"
+                  "example": "Data Science"
                 },
                 "graduationYear": {
-                  "example": "any"
+                  "example": 2025
                 },
                 "GPA": {
-                  "example": "any"
+                  "example": 3.8
                 },
                 "attendanceMode": {
-                  "example": "any"
+                  "example": "hybrid"
                 },
                 "courses": {
-                  "example": "any"
+                  "example": ["CS101", "DS101"]
                 }
               }
             }
@@ -173,7 +151,8 @@
         }
       },
       "delete": {
-        "description": "",
+        "tags": ["Students"],
+        "description": "Delete a student",
         "parameters": [
           {
             "name": "id",
@@ -197,7 +176,8 @@
     },
     "/courses/": {
       "get": {
-        "description": "",
+        "tags": ["Courses"],
+        "description": "Get all courses",
         "produces": [
           "application/json"
         ],
@@ -208,7 +188,8 @@
         }
       },
       "post": {
-        "description": "",
+        "tags": ["Courses"],
+        "description": "Create a new course",
         "parameters": [
           {
             "name": "body",
@@ -217,16 +198,16 @@
               "type": "object",
               "properties": {
                 "courseCode": {
-                  "example": "any"
+                  "example": "CS101"
                 },
                 "courseName": {
-                  "example": "any"
+                  "example": "Introduction to Computer Science"
                 },
                 "instructor": {
-                  "example": "any"
+                  "example": "Dr. Smith"
                 },
                 "semester": {
-                  "example": "any"
+                  "example": "Fall 2024"
                 }
               }
             }
@@ -247,10 +228,8 @@
     },
     "/courses/{id}": {
       "get": {
-        "description": "",
-        "produces": [
-          "application/json"
-        ],
+        "tags": ["Courses"],
+        "description": "Get course by ID",
         "parameters": [
           {
             "name": "id",
@@ -266,7 +245,8 @@
         }
       },
       "put": {
-        "description": "",
+        "tags": ["Courses"],
+        "description": "Update a course's information",
         "parameters": [
           {
             "name": "id",
@@ -281,16 +261,16 @@
               "type": "object",
               "properties": {
                 "courseCode": {
-                  "example": "any"
+                  "example": "CS102"
                 },
                 "courseName": {
-                  "example": "any"
+                  "example": "Advanced Computer Science"
                 },
                 "instructor": {
-                  "example": "any"
+                  "example": "Dr. Johnson"
                 },
                 "semester": {
-                  "example": "any"
+                  "example": "Spring 2025"
                 }
               }
             }
@@ -309,7 +289,8 @@
         }
       },
       "delete": {
-        "description": "",
+        "tags": ["Courses"],
+        "description": "Delete a course",
         "parameters": [
           {
             "name": "id",

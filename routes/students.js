@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const studentsController = require('../controllers/students');
-const validator = require('../validators/validator');
+const validate = require('../validators/validator');
 
 
 router.get('/', studentsController.getAll);
@@ -12,16 +12,16 @@ router.get('/:id', studentsController.getSingle);
 // POST - Create a student with validation
 router.post(
     '/',
-    validator.studentRules(),     // Validate request body
-    validator.checkData,          // Check for validation errors
+    validate.studentRules(),     // Validate request body
+    validate.checkData,          // Check for validation errors
     studentsController.createStudent
   );
   
   // PUT - Update a student with validation
   router.put(
     '/:id',
-    validator.studentRules(),     // Validate request body
-    validator.checkData,          // Check for validation errors
+    validate.studentRules(),     // Validate request body
+    validate.checkData,          // Check for validation errors
     studentsController.updateStudent
   );
   

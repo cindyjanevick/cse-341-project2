@@ -7,7 +7,9 @@ validate.studentRules = () => {
       .exists({ checkFalsy: true })
       .withMessage('Name is required')
       .isString()
-      .withMessage('Name must be a string'),
+      .withMessage('Name must be a string')
+      .isLength({ min: 1 })
+      .withMessage('Name cannot be empty'),
     body('email')
       .exists({ checkFalsy: true })
       .withMessage('Email is required')
@@ -22,7 +24,9 @@ validate.studentRules = () => {
       .exists({ checkFalsy: true })
       .withMessage('Major is required')
       .isString()
-      .withMessage('Major must be a string'),
+      .withMessage('Major must be a string')
+      .isLength({ min: 1 })
+      .withMessage('Major cannot be empty'),
     body('graduationYear')
       .exists()
       .withMessage('Graduation year is required')
