@@ -2,7 +2,7 @@ const mongodb = require('../data/database');
 const ObjectId = require ('mongodb').ObjectId;
 
 const getAll = async (req, res ) => {
-    
+    //swagger.tags=['Courses']
     const result = await mongodb.getDatabase().db().collection('courses').find();
     result.toArray().then((courses) => {
         res.setHeader('Content-Type', 'application/json');
@@ -11,6 +11,7 @@ const getAll = async (req, res ) => {
 };
 
 const getSingle = async (req, res ) => {
+     //#swagger.tags=['Courses']
     const courseId = new ObjectId(req.params.id);
     const result = await mongodb.getDatabase().db().collection('courses').find({_id: courseId});
     result.toArray().then((courses) => {
@@ -20,6 +21,7 @@ const getSingle = async (req, res ) => {
 };
 
 const createCourse = async (req, res) => {
+     //#swagger.tags=['Courses']
     const course = {
         courseCode: req.body.courseCode,
         courseName: req.body.courseName,
@@ -37,6 +39,7 @@ const createCourse = async (req, res) => {
 
 
 const updateCourse = async (req, res) => {
+     //#swagger.tags=['Courses']
     if(!ObjectId.isValid(req.params.id)){
         res.status(400).json('Course ID is not valid')
     }
@@ -56,6 +59,7 @@ const updateCourse = async (req, res) => {
 };
 
 const deleteCourse = async (req, res) => {
+     //#swagger.tags=['Courses']
     if(!ObjectId.isValid(req,params.id)){
         res.status(400).json('Course ID is not valid');
     }
