@@ -1,0 +1,74 @@
+// LOCAL HOST
+### Get all Students
+GET http://localhost:3001/students
+
+### Get student by id
+GET http://localhost:3001/students/67dee4450de2b2bf190cf606
+
+### Create student
+POST http://localhost:3001/students HTTP/1.1
+content-type: application/json
+
+{
+    "name": "Test 3",
+    "email": "test1@example.com",
+    "age": 41,
+    "major": "Computer Science",
+    "graduationYear": 2028,
+    "GPA": 3.5,
+    "attendanceMode": "online",
+    "courses": ["CS101", "MATH101", "PHYS101"]
+}
+
+### Update Student
+PUT http://localhost:3001/students/67defcb8e977c2dbee19b9fa HTTP/1.1
+content-type: application/json
+
+{
+    "name": "Test 2",
+    "email": "test2@example.com",
+    "age": 35,
+    "major": "Computer Science",
+    "graduationYear": 2028,
+    "GPA": 3.5,
+    "attendanceMode": "online",
+    "courses": ["CS101", "MATH101", "PHYS101"] 
+}
+
+### DELETE Student
+DELETE http://localhost:3001/students/67dee6470de2b2bf190cf608
+
+//COURSES
+
+### Get all courses
+GET http://localhost:3001/courses
+
+### Get course by id
+GET http://localhost:3001/courses/67de08572623bd733debd0e4
+
+### Create course
+POST http://localhost:3001/courses HTTP/1.1
+content-type: application/json
+
+{
+    "courseCode": "WDD330",
+    "courseName": "Web Frontend Development II",
+    "instructor": "Jason Francis",
+    "semester": "Winter 2025"
+
+}
+
+### Update course
+PUT http://localhost:3001/courses/67deff64e977c2dbee19b9fe HTTP/1.1
+content-type: application/json
+
+{
+    "courseCode": "CS101",
+    "courseName": "Introduction to Computer Science",
+    "instructor": "Dr. Smith",
+    "semester": "Fall 2024"
+
+}
+
+### DELETE course
+DELETE http://localhost:3001/courses/67deff64e977c2dbee19b9fe

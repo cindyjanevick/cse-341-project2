@@ -19,7 +19,58 @@ const getSingle = async (req, res ) => {
     });
 };
 
+const createCourse = async (req, res) => {
+    const course = {
+        courseCode: req.body.courseCode,
+        courseName: req.body.courseName,
+        instructor: req.body.instructor,
+        semester: req.body.semester
+    };
+    const response = await mongodb.getDatabase().db().collection('courses').insertOne(course);
+    if (response.acknowledged) {
+        res.status(204).send();
+    } else{
+        res.status(500).json(response.error || 'Some error ocurred while creating the course');
+    }
+    
+};
+
+
+const updateCourse = async (req, res) => {
+    if(!ObjectId.isValid(req.params.id)){
+        res.status(400).json('Course ID is not valid')
+    }
+    const courseId = new ObjectId(req.params.id);
+    const course = {
+        courseCode: req.body.courseCode,
+        courseName: req.body.courseName,
+        instructor: req.body.instructor,
+        semester: req.body.semester 
+    };
+    const response = await mongodb.getDatabase().db().collection('courses').replaceOne({_id: courseId}, course);
+    if (response.modifiedCount >0) {
+        res.status(204).send('The course has been updated');
+    } else{
+        res.status(500).json(response.error || 'Some error ocurred while updating the course');
+    }
+};
+
+const deleteCourse = async (req, res) => {
+    if(!ObjectId.isValid(req,params.id)){
+        res.status(400).json('Course ID is not valid');
+    }
+    const courseId = new ObjectId(req.params.id);
+    const response = await mongodb.getDatabase().db().collection('courses').deleteOne({_id: courseId});
+    if (response.deletedCount >0) {
+        res.status(204).send('Course deleted');
+    } else{
+        res.status(500).json(response.error || 'Some error ocurred while deleting the course');
+    }
+};
 module.exports ={
     getAll,
-    getSingle
+    getSingle,
+    createCourse,
+    updateCourse,
+    deleteCourse,
 };
