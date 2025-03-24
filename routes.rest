@@ -21,22 +21,25 @@ content-type: application/json
 }
 
 ### Update Student
-PUT http://localhost:3001/students/67e0db290ce23094a025bcdb HTTP/1.1
+PUT http://localhost:3001/students/67e15db3dfb80f1362dfe4f6 HTTP/1.1
 content-type: application/json
 
 {
-    "name": "Alisa Perez",
-    "email": "testap@example.com",
-    "age": 35,
+    "name": "Evelyn Potter",
+    "email": "john.doe@example.com",
+    "age": 23,
     "major": "Computer Science",
-    "graduationYear": 2025,
-    "GPA": 3.9,
-    "attendanceMode": "online",
-    "courses": ["CS101", "MATH101", "PHYS101"] 
+    "graduationYear": 2027,
+    "GPA": 3.5,
+    "attendanceMode": "in-person",
+    "courses": [
+      "CS101",
+      "CS102"
+    ]
 }
 
 ### DELETE Student
-DELETE http://localhost:3001/students/67df43d92eb2cfd0cc2cfac3
+DELETE http://localhost:3001/students/67df438e2eb2cfd0cc2cfac2
 
 //COURSES
 

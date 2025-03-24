@@ -25,6 +25,24 @@
           }
         }
       },
+      "/students/{id}": {
+      "get": {
+        "tags": ["Students"],
+        "description": "Get a student by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
       "post": {
         "tags": ["Students"],
         "description": "Create a new student",
@@ -76,24 +94,7 @@
         }
       }
     },
-    "/students/{id}": {
-      "get": {
-        "tags": ["Students"],
-        "description": "Get a student by ID",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      },
+    
       "put": {
         "tags": ["Students"],
         "description": "Update a student's information",
@@ -187,6 +188,24 @@
           }
         }
       },
+      "/courses/{id}": {
+      "get": {
+        "tags": ["Courses"],
+        "description": "Get course by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
       "post": {
         "tags": ["Courses"],
         "description": "Create a new course",
@@ -226,24 +245,7 @@
         }
       }
     },
-    "/courses/{id}": {
-      "get": {
-        "tags": ["Courses"],
-        "description": "Get course by ID",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      },
+    
       "put": {
         "tags": ["Courses"],
         "description": "Update a course's information",
