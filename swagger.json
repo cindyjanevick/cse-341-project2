@@ -25,22 +25,13 @@
         }
       }
     },
-    "/api-docs": {
-      "get": {
-        "description": "",
-        "responses": {
-          "default": {
-            "description": ""
-          }
-        }
-      }
-    },
+    
     "/students/": {
       "get": {
         "tags": [
           "Students"
         ],
-        "description": "",
+        "description": "Get all the Students",
         "produces": [
           "application/json"
         ],
@@ -57,7 +48,7 @@
         "tags": [
           "Students"
         ],
-        "description": "",
+        "description": "Create a new Student",
         "parameters": [
           {
             "name": "body",
@@ -111,7 +102,7 @@
         "tags": [
           "Students"
         ],
-        "description": "",
+        "description": "Get Student by Id",
         "produces": [
           "application/json"
         ],
@@ -139,7 +130,7 @@
         "tags": [
           "Students"
         ],
-        "description": "",
+        "description": "Update Student",
         "parameters": [
           {
             "name": "id",
@@ -197,7 +188,7 @@
         "tags": [
           "Students"
         ],
-        "description": "",
+        "description": "Delete a Student",
         "parameters": [
           {
             "name": "id",
@@ -224,7 +215,7 @@
         "tags": [
           "Courses"
         ],
-        "description": "",
+        "description": "Get all the courses",
         "produces": [
           "application/json"
         ],
@@ -241,7 +232,7 @@
         "tags": [
           "Courses"
         ],
-        "description": "",
+        "description": "Create a course",
         "parameters": [
           {
             "name": "body",
@@ -283,7 +274,7 @@
         "tags": [
           "Courses"
         ],
-        "description": "",
+        "description": "Get a course by Id",
         "produces": [
           "application/json"
         ],
@@ -311,7 +302,7 @@
         "tags": [
           "Courses"
         ],
-        "description": "",
+        "description": "Update a Course",
         "parameters": [
           {
             "name": "id",
@@ -357,7 +348,7 @@
         "tags": [
           "Courses"
         ],
-        "description": "",
+        "description": "Delete a course",
         "parameters": [
           {
             "name": "id",
