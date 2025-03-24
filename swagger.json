@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "title": "Students Api",
-    "description": "Students Api",
+    "description": "API for managing students and courses",
     "version": "1.0.0"
   },
   "host": "localhost:3001",
@@ -16,27 +16,7 @@
       "get": {
         "tags": ["Students"],
         "description": "Get all students",
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      },
-      "/students/{id}": {
-      "get": {
-        "tags": ["Students"],
-        "description": "Get a student by ID",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
+        "produces": ["application/json"],
         "responses": {
           "200": {
             "description": "OK"
@@ -50,51 +30,46 @@
           {
             "name": "body",
             "in": "body",
+            "required": true,
             "schema": {
               "type": "object",
               "properties": {
-                "name": {
-                  "example": "John Doe"
-                },
-                "email": {
-                  "example": "john.doe@example.com"
-                },
-                "age": {
-                  "example": 22
-                },
-                "major": {
-                  "example": "Computer Science"
-                },
-                "graduationYear": {
-                  "example": 2024
-                },
-                "GPA": {
-                  "example": 3.5
-                },
-                "attendanceMode": {
-                  "example": "in-person"
-                },
-                "courses": {
-                  "example": ["CS101", "CS102"]
-                }
+                "name": { "type": "string", "example": "John Doe" },
+                "email": { "type": "string", "example": "john.doe@example.com" },
+                "age": { "type": "integer", "example": 22 },
+                "major": { "type": "string", "example": "Computer Science" },
+                "graduationYear": { "type": "integer", "example": 2024 },
+                "GPA": { "type": "number", "example": 3.5 },
+                "attendanceMode": { "type": "string", "example": "in-person" },
+                "courses": { "type": "array", "items": { "type": "string" }, "example": ["CS101", "CS102"] }
               }
             }
           }
         ],
         "responses": {
-          "201": {
-            "description": "Created"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
+          "201": { "description": "Created" },
+          "400": { "description": "Bad Request" },
+          "500": { "description": "Internal Server Error" }
         }
       }
     },
-    
+    "/students/{id}": {
+      "get": {
+        "tags": ["Students"],
+        "description": "Get a student by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": { "description": "OK" },
+          "404": { "description": "Student Not Found" }
+        }
+      },
       "put": {
         "tags": ["Students"],
         "description": "Update a student's information",
@@ -108,47 +83,27 @@
           {
             "name": "body",
             "in": "body",
+            "required": true,
             "schema": {
               "type": "object",
               "properties": {
-                "name": {
-                  "example": "John Doe Updated"
-                },
-                "email": {
-                  "example": "john.doe.updated@example.com"
-                },
-                "age": {
-                  "example": 23
-                },
-                "major": {
-                  "example": "Data Science"
-                },
-                "graduationYear": {
-                  "example": 2025
-                },
-                "GPA": {
-                  "example": 3.8
-                },
-                "attendanceMode": {
-                  "example": "hybrid"
-                },
-                "courses": {
-                  "example": ["CS101", "DS101"]
-                }
+                "name": { "type": "string", "example": "John Doe Updated" },
+                "email": { "type": "string", "example": "john.doe.updated@example.com" },
+                "age": { "type": "integer", "example": 23 },
+                "major": { "type": "string", "example": "Data Science" },
+                "graduationYear": { "type": "integer", "example": 2025 },
+                "GPA": { "type": "number", "example": 3.8 },
+                "attendanceMode": { "type": "string", "example": "hybrid" },
+                "courses": { "type": "array", "items": { "type": "string" }, "example": ["CS101", "DS101"] }
               }
             }
           }
         ],
         "responses": {
-          "204": {
-            "description": "No Content"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
+          "204": { "description": "No Content" },
+          "400": { "description": "Bad Request" },
+          "404": { "description": "Student Not Found" },
+          "500": { "description": "Internal Server Error" }
         }
       },
       "delete": {
@@ -163,15 +118,9 @@
           }
         ],
         "responses": {
-          "204": {
-            "description": "No Content"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
+          "204": { "description": "No Content" },
+          "400": { "description": "Bad Request" },
+          "500": { "description": "Internal Server Error" }
         }
       }
     },
@@ -179,16 +128,38 @@
       "get": {
         "tags": ["Courses"],
         "description": "Get all courses",
-        "produces": [
-          "application/json"
-        ],
+        "produces": ["application/json"],
         "responses": {
-          "200": {
-            "description": "OK"
-          }
+          "200": { "description": "OK" }
         }
       },
-      "/courses/{id}": {
+      "post": {
+        "tags": ["Courses"],
+        "description": "Create a new course",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "courseCode": { "type": "string", "example": "CS101" },
+                "courseName": { "type": "string", "example": "Introduction to Computer Science" },
+                "instructor": { "type": "string", "example": "Dr. Smith" },
+                "semester": { "type": "string", "example": "Fall 2024" }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": { "description": "Created" },
+          "400": { "description": "Bad Request" },
+          "500": { "description": "Internal Server Error" }
+        }
+      }
+    },
+    "/courses/{id}": {
       "get": {
         "tags": ["Courses"],
         "description": "Get course by ID",
@@ -201,51 +172,10 @@
           }
         ],
         "responses": {
-          "200": {
-            "description": "OK"
-          }
+          "200": { "description": "OK" },
+          "404": { "description": "Course Not Found" }
         }
       },
-      "post": {
-        "tags": ["Courses"],
-        "description": "Create a new course",
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "courseCode": {
-                  "example": "CS101"
-                },
-                "courseName": {
-                  "example": "Introduction to Computer Science"
-                },
-                "instructor": {
-                  "example": "Dr. Smith"
-                },
-                "semester": {
-                  "example": "Fall 2024"
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "No Content"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    
       "put": {
         "tags": ["Courses"],
         "description": "Update a course's information",
@@ -259,35 +189,23 @@
           {
             "name": "body",
             "in": "body",
+            "required": true,
             "schema": {
               "type": "object",
               "properties": {
-                "courseCode": {
-                  "example": "CS102"
-                },
-                "courseName": {
-                  "example": "Advanced Computer Science"
-                },
-                "instructor": {
-                  "example": "Dr. Johnson"
-                },
-                "semester": {
-                  "example": "Spring 2025"
-                }
+                "courseCode": { "type": "string", "example": "CS102" },
+                "courseName": { "type": "string", "example": "Advanced Computer Science" },
+                "instructor": { "type": "string", "example": "Dr. Johnson" },
+                "semester": { "type": "string", "example": "Spring 2025" }
               }
             }
           }
         ],
         "responses": {
-          "204": {
-            "description": "No Content"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
+          "204": { "description": "No Content" },
+          "400": { "description": "Bad Request" },
+          "404": { "description": "Course Not Found" },
+          "500": { "description": "Internal Server Error" }
         }
       },
       "delete": {
@@ -302,15 +220,9 @@
           }
         ],
         "responses": {
-          "204": {
-            "description": "No Content"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
+          "204": { "description": "No Content" },
+          "400": { "description": "Bad Request" },
+          "500": { "description": "Internal Server Error" }
         }
       }
     }
