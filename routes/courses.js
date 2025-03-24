@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const coursesController = require('../controllers/courses');
-const Validate = require('../validators/validator');
+// const Validate = require('../validators/validator');
 const validate = require('../validators/validator');
 
 router.get('/', coursesController.getAll);
