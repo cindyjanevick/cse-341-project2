@@ -8,46 +8,26 @@
   "host": "localhost:3001",
   "basePath": "/",
   "schemes": [
-    "http"
+    "http",
+    "https"
   ],
   "paths": {
-    "/": {
-      "get": {
-        "tags": [
-          "Hello World"
-        ],
-        "description": "",
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    
     "/students/": {
       "get": {
-        "tags": [
-          "Students"
-        ],
-        "description": "Get all the Students",
+        "tags": ["Students"],
+        "description": "Get all students",
         "produces": [
           "application/json"
         ],
         "responses": {
           "200": {
             "description": "OK"
-          },
-          "500": {
-            "description": "Internal Server Error"
           }
         }
       },
       "post": {
-        "tags": [
-          "Students"
-        ],
-        "description": "Create a new Student",
+        "tags": ["Students"],
+        "description": "Create a new student",
         "parameters": [
           {
             "name": "body",
@@ -56,28 +36,28 @@
               "type": "object",
               "properties": {
                 "name": {
-                  "example": "any"
+                  "example": "John Doe"
                 },
                 "email": {
-                  "example": "any"
+                  "example": "john.doe@example.com"
                 },
                 "age": {
-                  "example": "any"
+                  "example": 22
                 },
                 "major": {
-                  "example": "any"
+                  "example": "Computer Science"
                 },
                 "graduationYear": {
-                  "example": "any"
+                  "example": 2024
                 },
                 "GPA": {
-                  "example": "any"
+                  "example": 3.5
                 },
                 "attendanceMode": {
-                  "example": "any"
+                  "example": "in-person"
                 },
                 "courses": {
-                  "example": "any"
+                  "example": ["CS101", "CS102"]
                 }
               }
             }
@@ -98,13 +78,8 @@
     },
     "/students/{id}": {
       "get": {
-        "tags": [
-          "Students"
-        ],
-        "description": "Get Student by Id",
-        "produces": [
-          "application/json"
-        ],
+        "tags": ["Students"],
+        "description": "Get a student by ID",
         "parameters": [
           {
             "name": "id",
@@ -116,20 +91,12 @@
         "responses": {
           "200": {
             "description": "OK"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
           }
         }
       },
       "put": {
-        "tags": [
-          "Students"
-        ],
-        "description": "Update Student",
+        "tags": ["Students"],
+        "description": "Update a student's information",
         "parameters": [
           {
             "name": "id",
@@ -144,28 +111,28 @@
               "type": "object",
               "properties": {
                 "name": {
-                  "example": "any"
+                  "example": "John Doe Updated"
                 },
                 "email": {
-                  "example": "any"
+                  "example": "john.doe.updated@example.com"
                 },
                 "age": {
-                  "example": "any"
+                  "example": 23
                 },
                 "major": {
-                  "example": "any"
+                  "example": "Data Science"
                 },
                 "graduationYear": {
-                  "example": "any"
+                  "example": 2025
                 },
                 "GPA": {
-                  "example": "any"
+                  "example": 3.8
                 },
                 "attendanceMode": {
-                  "example": "any"
+                  "example": "hybrid"
                 },
                 "courses": {
-                  "example": "any"
+                  "example": ["CS101", "DS101"]
                 }
               }
             }
@@ -184,10 +151,8 @@
         }
       },
       "delete": {
-        "tags": [
-          "Students"
-        ],
-        "description": "Delete a Student",
+        "tags": ["Students"],
+        "description": "Delete a student",
         "parameters": [
           {
             "name": "id",
@@ -211,27 +176,20 @@
     },
     "/courses/": {
       "get": {
-        "tags": [
-          "Courses"
-        ],
-        "description": "Get all the courses",
+        "tags": ["Courses"],
+        "description": "Get all courses",
         "produces": [
           "application/json"
         ],
         "responses": {
           "200": {
             "description": "OK"
-          },
-          "500": {
-            "description": "Internal Server Error"
           }
         }
       },
       "post": {
-        "tags": [
-          "Courses"
-        ],
-        "description": "Create a course",
+        "tags": ["Courses"],
+        "description": "Create a new course",
         "parameters": [
           {
             "name": "body",
@@ -240,24 +198,24 @@
               "type": "object",
               "properties": {
                 "courseCode": {
-                  "example": "any"
+                  "example": "CS101"
                 },
                 "courseName": {
-                  "example": "any"
+                  "example": "Introduction to Computer Science"
                 },
                 "instructor": {
-                  "example": "any"
+                  "example": "Dr. Smith"
                 },
                 "semester": {
-                  "example": "any"
+                  "example": "Fall 2024"
                 }
               }
             }
           }
         ],
         "responses": {
-          "201": {
-            "description": "Created"
+          "204": {
+            "description": "No Content"
           },
           "400": {
             "description": "Bad Request"
@@ -270,13 +228,8 @@
     },
     "/courses/{id}": {
       "get": {
-        "tags": [
-          "Courses"
-        ],
-        "description": "Get a course by Id",
-        "produces": [
-          "application/json"
-        ],
+        "tags": ["Courses"],
+        "description": "Get course by ID",
         "parameters": [
           {
             "name": "id",
@@ -288,20 +241,12 @@
         "responses": {
           "200": {
             "description": "OK"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
           }
         }
       },
       "put": {
-        "tags": [
-          "Courses"
-        ],
-        "description": "Update a Course",
+        "tags": ["Courses"],
+        "description": "Update a course's information",
         "parameters": [
           {
             "name": "id",
@@ -316,16 +261,16 @@
               "type": "object",
               "properties": {
                 "courseCode": {
-                  "example": "any"
+                  "example": "CS102"
                 },
                 "courseName": {
-                  "example": "any"
+                  "example": "Advanced Computer Science"
                 },
                 "instructor": {
-                  "example": "any"
+                  "example": "Dr. Johnson"
                 },
                 "semester": {
-                  "example": "any"
+                  "example": "Spring 2025"
                 }
               }
             }
@@ -344,9 +289,7 @@
         }
       },
       "delete": {
-        "tags": [
-          "Courses"
-        ],
+        "tags": ["Courses"],
         "description": "Delete a course",
         "parameters": [
           {
