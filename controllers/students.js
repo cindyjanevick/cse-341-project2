@@ -70,7 +70,7 @@ const updateStudent = async (req, res) => {
 
 const deleteStudent = async (req, res) => {
     //#swagger.tags=['Students']
-    if(!ObjectId.isValid(req,params.id)){
+    if(!ObjectId.isValid(req.params.id)){
         res.status(400).json('Student ID is not valid');
     }
     const studentId = new ObjectId(req.params.id);
