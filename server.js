@@ -36,4 +36,3 @@ mongodb.initDb((err) => {
         app.listen(port, () => {console.log(`Database is listening and node Running on port ${port}`)});
     }
 });
-
