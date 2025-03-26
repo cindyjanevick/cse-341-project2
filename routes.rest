@@ -74,4 +74,114 @@ content-type: application/json
 }
 
 ### DELETE course
-DELETE http://localhost:3001/courses/67deff64e977c2dbee19b9fe
+DELETE http://localhost:3001/courses/67e19134ce299b9936986c57
+
+// Error handling 
+### Get all courses (should return 200 OK)
+GET http://localhost:3001/courses
+Content-Type: application/json
+
+
+### Get single course (replace ID with an invalid one, should return 400 or 404)
+GET http://localhost:3001/courses/67de08382623bd733debd0e3
+Content-Type: application/json
+
+### Create a course (should return 201 Created)
+POST http://localhost:3001/courses
+Content-Type: application/json
+
+{
+  "courseCode": "CS112",
+  "courseName": "Intro to Programming II",
+  "instructor": "John Doe",
+  "semester": "Spring 2025"
+}
+
+### Update a course (invalid ID, should return 400)
+PUT http://localhost:3001/courses/67e3e411625a8abd74c15d57
+Content-Type: application/json
+
+{
+  "courseCode": "CS102",
+  "courseName": "Advanced Programming",
+  "instructor": "Jane Smith",
+  "semester": "Fall 2025"
+}
+
+### Delete a course (invalid ID, should return 400)
+DELETE http://localhost:3001/courses/67e3e411625a8abd74c15d57
+Content-Type: application/json
+
+
+//Error handling for students
+### GET all students
+GET http://localhost:3001/students
+
+
+### GET a single student
+GET http://localhost:3001/students/67de05b92623bd733debd0dc
+
+
+### POST - Create a new student
+POST http://localhost:3001/students
+Content-Type: application/json
+
+{
+    "name": "John Doe",
+    "email": "john.doe@example.com",
+    "age": 22,
+    "major": "Computer Science",
+    "graduationYear": 2023,
+    "GPA": 3.8,
+    "attendanceMode": "online",
+    "courses": ["CS101", "CS102"]
+}
+
+
+### POST - Create a student with missing data
+POST http://localhost:3001/students
+Content-Type: application/json
+
+{
+    "name": "Jane Doe"
+}
+# This should return a 400 status with an error indicating the missing fields.
+
+
+### PUT - Update an existing student
+PUT http://localhost:3001/students/67de05b92623bd733debd0dc
+Content-Type: application/json
+
+{
+    "name": "Jane Smith",
+    "email": "jane.smith@example.com",
+    "age": 22,
+    "major": "Biology",
+    "graduationYear": 2024,
+    "GPA": 3.9,
+    "attendanceMode": "in-person",
+    "courses": [
+        "ENG101"
+    ]
+}
+
+
+### PUT - Update a student with an invalid ID
+PUT http://localhost:3001/students/67de05b92623bd733debd0dc3
+Content-Type: application/json
+
+{
+    "name": "Updated Name"
+}
+# This should return a 400 status with an error indicating the ID is invalid.
+
+
+### DELETE a student
+DELETE http://localhost:3001/students/67de05b92623bd733debd0dc
+# Replace {id} with a valid student ID. This will delete the student with the given ID.
+
+### DELETE a student with an invalid ID
+DELETE http://localhost:3001/students/67de05b92623bd733debd0dc3
+# This should return a 400 status with an error indicating the ID is invalid.
+
+
