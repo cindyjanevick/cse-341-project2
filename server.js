@@ -4,7 +4,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./swagger.json');
-const dotenv = require('dotenv').config();
+// const dotenv = require('dotenv').config();
 
 const passport = require('passport');
 const session = require('express-session');
@@ -17,7 +17,6 @@ const port = process.env.PORT || 3002;
 
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
-
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(
@@ -27,25 +26,26 @@ app.use(
     saveUninitialized: true,
   })
 );
-    //this is the basic express session ({..}) initialization.
-app.use(passport.initialize())
-    // init passport on every route call.
-app.use(passport.session())
-    // allow passport to use "express-session"
-app.use((req, res, next)=> {
-    
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader(
-        'Access-Control-Allow-Headers',
-        'Origin, X-Requested-With, Content-Type, Accept, Z-Key'
-    );
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST,PUT, DELETE, OPTIONS');
-    next();
+app.use(passport.initialize());
+app.use(passport.session());
+app.use((req, res, next) => {
+  console.log(`Route hit: ${req.method} ${req.url}`);
+  next();
 });
 
-//cors setup
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  next();
+});
 app.use(cors({ methods: ['GET', 'POST', 'DELETE', 'UPDATE', 'PUT', 'PATCH'] }));
 app.use(cors({ origin: '*' }));
+
+process.on('uncaughtException', (err, origin) => {
+  console.log(
+    process.stderr.fd,
+    `Caught exception: ${err}\n` + `Exception origin: ${origin}`
+  );
+});
 
 //import and use routes
 app.use('/', require('./routes/index.js'));
@@ -77,17 +77,19 @@ app.get('/', (req, res) => {
     );
   });
   
-  app.get(
-    '/github/callback',
-    passport.authenticate('github', {
-      failureRedirect: '/api-docs',
-      session: false,
-    }),
-    (req, res) => {
-      req.session.user = req.user;
-      res.redirect('/');
-    }
-  );
+  app.get('/github/callback', passport.authenticate('github', { 
+    failureRedirect: '/api-docs', session: true 
+}), (req, res) => {
+    console.log("GitHub Authentication Successful");
+    console.log("User Data from Passport:", req.user);
+    
+    req.session.user = req.user;  // Store user in session
+
+    console.log("Session after setting user:", req.session);
+    
+    res.redirect('/');  // Redirect to home
+});
+
 
 
 
