@@ -5,10 +5,10 @@
     "description": "Students Api",
     "version": "1.0.0"
   },
-  "host": "localhost:3003",
+  "host": "https://project2-jpjp.onrender.com",
   "basePath": "/",
   "schemes": [
-    "http",
+    
     "https"
   ],
   "paths": {
