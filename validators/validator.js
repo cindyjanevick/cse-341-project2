@@ -78,7 +78,8 @@ validate.courseRules = () =>{
 
 // Shared Validation Result Checker
 validate.checkData = (req, res, next) => {
-    const errors = validationResult(req);
+    let errors =[];
+    errors = validationResult(req); //change here//
     if (!errors.isEmpty()) {
       return res.status(400).json({
         success: false,
