@@ -13,7 +13,7 @@ const GitHubStrategy = require('passport-github2').Strategy;
 
 const cors = require('cors');
 
-const port = process.env.PORT || 3002;
+const port = process.env.PORT || 3003;
 
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
@@ -89,10 +89,6 @@ app.get('/', (req, res) => {
     
     res.redirect('/');  // Redirect to home
 });
-
-
-
-
 
 mongodb.initDb((err) => {
     if (err){

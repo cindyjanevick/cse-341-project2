@@ -1,15 +1,15 @@
 // Error handling 
 ### Get all courses (should return 200 OK)
-GET http://localhost:3002/courses
+GET http://localhost:3003/courses
 Content-Type: application/json
 
 
 ### Get single course (replace ID with an invalid one, should return 400 or 404)
-GET http://localhost:3002/courses/67de08382623bd733debd0e3
+GET http://localhost:3003/courses/67de08382623bd733debd0e3
 Content-Type: application/json
 
 ### Create a course (should return 201 Created)
-POST http://localhost:3002/courses
+POST http://localhost:3003/courses
 Content-Type: application/json
 
 {
@@ -20,7 +20,7 @@ Content-Type: application/json
 }
 
 ### Update a course (invalid ID, should return 400)
-PUT http://localhost:3002/courses/67e3e411625a8abd74c15d57
+PUT http://localhost:3003/courses/67e3e411625a8abd74c15d57
 Content-Type: application/json
 
 {
@@ -31,21 +31,21 @@ Content-Type: application/json
 }
 
 ### Delete a course (invalid ID, should return 400)
-DELETE http://localhost:3002/courses/67e3e411625a8abd74c15d57
+DELETE http://localhost:3003/courses/67e3e411625a8abd74c15d57
 Content-Type: application/json
 
 
 //Error handling for students
 ### GET all students
-GET http://localhost:3002/students
+GET http://localhost:3003/students
 
 
 ### GET a single student
-GET http://localhost:3002/students/67de05b92623bd733debd0dc
+GET http://localhost:3003/students/67de05b92623bd733debd0dc
 
 
 ### POST - Create a new student
-POST http://localhost:3002/students
+POST http://localhost:3003/students
 Content-Type: application/json
 
 {
@@ -61,7 +61,7 @@ Content-Type: application/json
 
 
 ### POST - Create a student with missing data
-POST http://localhost:3002/students
+POST http://localhost:3003/students
 Content-Type: application/json
 
 {
@@ -71,7 +71,7 @@ Content-Type: application/json
 
 
 ### PUT - Update an existing student
-PUT http://localhost:3002/students/67de05b92623bd733debd0dc
+PUT http://localhost:3003/students/67de05b92623bd733debd0dc
 Content-Type: application/json
 
 {
@@ -89,7 +89,7 @@ Content-Type: application/json
 
 
 ### PUT - Update a student with an invalid ID
-PUT http://localhost:3002/students/67de05b92623bd733debd0dc3
+PUT http://localhost:3003/students/67de05b92623bd733debd0dc3
 Content-Type: application/json
 
 {
@@ -99,11 +99,11 @@ Content-Type: application/json
 
 
 ### DELETE a student
-DELETE http://localhost:3002/students/67de05b92623bd733debd0dc
+DELETE http://localhost:3003/students/67de05b92623bd733debd0dc
 # Replace {id} with a valid student ID. This will delete the student with the given ID.
 
 ### DELETE a student with an invalid ID
-DELETE http://localhost:3002/students/67de05b92623bd733debd0dc3
+DELETE http://localhost:3003/students/67de05b92623bd733debd0dc3
 # This should return a 400 status with an error indicating the ID is invalid.
 
 

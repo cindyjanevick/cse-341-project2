@@ -5,7 +5,7 @@ const doc = {
         title: 'Students Api',
         description:'Students Api'
     },
-    host: 'localhost:3002',
+    host: 'localhost:3003',
     schemes: ['https','http']
 
 };
