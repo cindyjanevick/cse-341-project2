@@ -13,7 +13,7 @@ const GitHubStrategy = require('passport-github2').Strategy;
 
 const cors = require('cors');
 
-const port = process.env.PORT || 3003;
+const port = process.env.PORT || 3005;
 
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
